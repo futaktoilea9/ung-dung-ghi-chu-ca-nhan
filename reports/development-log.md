@@ -1,0 +1,7 @@
+# Nhật ký phát triển
+
+## 2026-04-21T18:01:34Z
+
+- Rà soát endpoint `/health` và `/api/items`
+- Kiểm tra seed data SQLite
+- Chuẩn bị bước cải thiện test coverage số 1
