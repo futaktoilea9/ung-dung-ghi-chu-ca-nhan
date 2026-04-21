@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">Flask · SQLite · REST API</p>
+      <h1>{{ title }}</h1>
+      <p>Ứng dụng mẫu đầy đủ với cơ sở dữ liệu SQLite, dashboard, seed data, kiểm thử tự động và API JSON.</p>
+      <div class="actions">
+        <a href="/api/stats">API thống kê</a>
+        <a href="/api/items">API dữ liệu</a>
+        <a href="/health">Health check</a>
+      </div>
+    </section>
+    <section class="cards">
+      {% for key, value in stats.items() %}
+      <article><span>{{ key.replace('_', ' ') }}</span><strong>{{ value }}</strong></article>
+      {% endfor %}
+    </section>
+    <section class="panel">
+      <h2>Dữ liệu mới nhất</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>{% if rows %}{% for key in rows[0].keys() %}<th>{{ key }}</th>{% endfor %}{% endif %}</tr></thead>
+          <tbody>{% for row in rows %}<tr>{% for value in row.values() %}<td>{{ value }}</td>{% endfor %}</tr>{% endfor %}</tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
